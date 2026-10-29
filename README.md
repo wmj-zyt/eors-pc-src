@@ -46,7 +46,7 @@ User/04-Hand-MobileNetV2-Test 用户工程测试版本
 
 编译工具 AHL-GEC-vsCode-IDE v5.13
 
-https://github.com/wmj-zyt/eors-pc-src/releases/download/v1.0/AHL-GEC-vsCode-IDE-v5.13.zip
+https://github.com/wmj-zyt/eors-pc-src/releases/download/v1.0/AHL-GEC-vsCode-IDE.v5.13.zip
 
 演示视频
 
