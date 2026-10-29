@@ -1,0 +1,40 @@
+# ============================================
+# EORS PC 源码 —— Git 忽略规则
+# ============================================
+
+# ---- 上传辅助脚本（仅本地使用，不进仓库）----
+push-to-github.sh
+
+# ---- 文档与二进制包（体积大，默认不进仓库）----
+# 如需上传压缩后的文档，建议转成 PDF 放到 docs/ 目录
+P01_Doc/*.docx
+P01_Doc/*.exe
+*.docx
+*.exe
+*.msi
+
+# ---- Python 缓存与虚拟环境 ----
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+*.egg-info/
+
+# ---- 构建产物 ----
+build/
+dist/
+*.spec.bak
+
+# ---- 运行时产物 ----
+received_images/
+*.log
+*.tmp
+
+# ---- IDE 配置 ----
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db

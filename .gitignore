@@ -1,0 +1,54 @@
+# ============================================
+# 《基于GEC的轻量级鸿蒙的驻留方法及应用》材料包
+# Git 忽略规则
+# ============================================
+
+# ---- 演示视频（161MB，超出 GitHub 单文件限制，见 05_演示视频/README.md）----
+*.mp4
+05_演示视频/*.mp4
+
+# ---- 压缩包与安装文件（体积大，走 Release 或网盘）----
+*.zip
+*.7z
+*.rar
+*.exe
+*.msi
+
+# ---- 上位机内的过程文档（58MB+，保留 readme.txt）----
+01_EORS_Source/**/P01_Doc/*.docx
+
+# ---- Keil / MDK / 嵌入式编译产物 ----
+**/Debug/
+**/Release/
+**/Objects/
+**/Listings/
+*.o
+*.d
+*.crf
+*.axf
+*.elf
+*.hex.md5
+*.map
+*.lst
+*.lnp
+*.dep
+*.iex
+*.sct
+*.bak
+*.uvguix.*
+*.scvd
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+build/
+dist/
+
+# ---- 编辑器与系统 ----
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini

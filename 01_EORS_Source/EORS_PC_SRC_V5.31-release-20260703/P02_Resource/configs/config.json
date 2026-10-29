@@ -1,0 +1,29 @@
+{
+    "appInfo": {
+        "name": "EORS",
+        "version": "V 5.3",
+        "description": "Embedded Object Recognition System（嵌入式物体认知系统）",
+        "author": "Chen Yuqing"
+    },
+    "globalSettings": {
+        "imageSize": {
+            "width": 160,
+            "height": 150
+        },
+        "collectImageSize": {
+            "width": 160,
+            "height": 150
+        },
+        "supportedModels": [
+            "MobileNetv2",
+            "NCP",
+            "CNN",
+            "ShuffleNetv1"
+        ]
+    },
+    "foldersPath": {
+        "datasetPath": "E:/QRS/EORS/EAI-BOOK-V0.8-260704/03-Software/CH02/Number",
+        "defaultPath": "C:\\",
+        "imagePath": "E:/QRS/EORS/EAI-BOOK-V0.8-260704/03-Software/CH02/Number/test/7"
+    }
+}

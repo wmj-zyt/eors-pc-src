@@ -1,0 +1,158 @@
+#方便阅读本文件的知识
+#(1)字符'\'表示换行
+#(2)所有目标的第一条指令前必须有一个tab，不可用4个空格代替
+#(3)$@  表示目标文件
+#   $^  表示所有的依赖文件
+#   $<  表示第一个依赖文件
+#   $?  表示比目标还要新的依赖文件列表
+
+#定义本文件中使用到的变量【根据实际需要修改】
+#控制台输出程序路径
+printf    := echo
+
+#.C文件文件夹
+SRC_C := srcc
+#.S文件文件夹
+SRC_S := srcs
+#.o文件存放目录
+D_OBJ := obj
+#.d文件存放目录
+D_MK  := dmk
+#.C文件列表
+SRC_CList := $(wildcard srcc/*.c)
+#.CPP文件列表
+#【20200305 1/8】 姜家乐&王浩波 新增.cpp的文件列表，仿照.c文件列表添加
+SRC_CPPList := $(wildcard srcc/*.cpp)
+#.s文件列表
+#【20200305 2/8】 姜家乐&王浩波 新增.S文件列表，并将原来.s和.S进行区分
+SRC_sList := $(wildcard srcs/*.s)
+#.S文件列表
+SRC_SList := $(wildcard srcs/*.S)
+
+#MKSUNXI工具
+MKSUNXI		:= ../00_Spl/tools/mksunxi
+
+#链接文件(.ld)的存储路径
+linkFile := "C:\Users\LX\Desktop\User_test1\03_MCU\Linker_file\link.ld"
+#定义生成的文件名
+finalGoal := User_test1
+#定义头文件所在的路径
+include := -I"C:\Users\LX\Desktop\User_test1\00_boot0" -I"C:\Users\LX\Desktop\User_test1\01_Doc" -I"C:\Users\LX\Desktop\User_test1\02_CPU" -I"C:\Users\LX\Desktop\User_test1\03_MCU" -I"C:\Users\LX\Desktop\User_test1\04_GEC" -I"C:\Users\LX\Desktop\User_test1\05_UserBoard" -I"C:\Users\LX\Desktop\User_test1\06_AlgorithmComponent" -I"C:\Users\LX\Desktop\User_test1\07_APPprg" -I"C:\Users\LX\Desktop\User_test1\Debug" -I"C:\Users\LX\Desktop\User_test1\00_boot0\include" -I"C:\Users\LX\Desktop\User_test1\03_MCU\Linker_file" -I"C:\Users\LX\Desktop\User_test1\03_MCU\MCU_drivers" -I"C:\Users\LX\Desktop\User_test1\03_MCU\startup" -I"C:\Users\LX\Desktop\User_test1\Debug\obj" -I"C:\Users\LX\Desktop\User_test1\Debug\srcc" -I"C:\Users\LX\Desktop\User_test1\Debug\srcs"
+#定义优化级别。共有O0、O1、O2、Os和Og，默认使用Og
+opt := Os
+#.o文件列表
+#【20200305 3/8】 姜家乐&王浩波 将原来的OBJ_C改为OBJ-CS，新增.S的.o生成文件
+
+#把.c文件替换为.o文件
+COBJS	:= $(addprefix $(D_OBJ)/,$(patsubst %.c,%.o,$(notdir $(SRC_CList))))
+#把.cpp文件替换为.o文件
+CPPOBJS := $(addprefix $(D_OBJ)/,$(patsubst %.cpp,%.o,$(notdir $(SRC_CPPList))))
+#把.s文件替换为.o文件  
+sOBJS	:= $(addprefix $(D_OBJ)/,$(patsubst %.s,%.o,$(notdir $(SRC_sList))))
+#把.S文件替换为.o文件  
+SOBJS	:= $(addprefix $(D_OBJ)/,$(patsubst %.S,%.o,$(notdir $(SRC_SList))))
+
+OBJ_CS	:= $(SOBJS) $(sOBJS) $(COBJS) $(CPPOBJS)
+
+
+#.d文件列表
+#【20200305 4/8】 姜家乐&王浩波 新增.S的.o.d生成文件
+
+#把.c文件替换为.o.d文件
+SRC_MK := $(addprefix $(D_OBJ)/, $(patsubst %.c,%.o.d,$(notdir $(SRC_CList))))
+#把.cpp文件替换为.d文件
+SRC_MK += $(addprefix $(D_OBJ)/, $(patsubst %.cpp,%.o.d,$(notdir $(SRC_CPPList))))
+#把.s文件替换为.d文件
+SRC_MK += $(addprefix $(D_OBJ)/, $(patsubst %.s,%.o.d,$(notdir $(SRC_sList))))
+#把.S文件替换为.d文件  
+SRC_MK += $(addprefix $(D_OBJ)/, $(patsubst %.S,%.o.d,$(notdir $(SRC_SList))))
+
+SRCDIRS := ../00_Spl \
+		   ../00_Spl/include \
+		   ../00_Spl/tools \
+           ../02_CPU \
+		   ../03_MCU \
+		   ../03_MCU/MCU_drivers \
+		   ../03_MCU/startup \
+		   ../04_GEC \
+		   ../05_UserBoard \
+		   ../06_AlgorithmComponent \
+		   ../07_APPprg \
+
+X_SRCDIRS	:= $(patsubst %, %, $(SRCDIRS))
+
+X_SFILES	:= $(foreach dir, $(X_SRCDIRS), $(wildcard $(dir)/*.S))
+X_sFILES	:= $(foreach dir, $(X_SRCDIRS), $(wildcard $(dir)/*.s))
+X_CFILES	:= $(foreach dir, $(X_SRCDIRS), $(wildcard $(dir)/*.c))
+X_CPPFILES	:= $(foreach dir, $(X_SRCDIRS), $(wildcard $(dir)/*.cpp))
+
+SFILENDIR		:= $(notdir  $(X_SFILES))
+sFILENDIR		:= $(notdir  $(X_sFILES))
+CFILENDIR		:= $(notdir  $(X_CFILES))
+CPPFILENDIR     := $(notdir  $(X_CPPFILES))
+
+X_SOBJS		:= $(patsubst %, obj/%, $(SFILENDIR:.S=.o))
+X_sOBJS		:= $(patsubst %, obj/%, $(sFILENDIR:.s=.o))
+X_COBJS		:= $(patsubst %, obj/%, $(CFILENDIR:.c=.o))
+X_CPPOBJS	:= $(patsubst %, obj/%, $(CPPFILENDIR:.cpp=.o)) 
+X_OBJS		:= $(X_SOBJS) $(X_COBJS) $(X_CPPOBJS)  $(X_sOBJS)
+
+
+#将文件夹./Source中的.c文件编译为.o文件
+#【20200305 5/8】 姜家乐&王浩波 将优先级-O0改成-$(opt),以下所有均修改
+$(COBJS):obj/%.o:srcc/%.c
+	riscv64-unknown-elf-gcc -march=rv64gcvxthead -mabi=lp64d -mcmodel=medlow -fno-stack-protector -g -ggdb -Wall \
+-O0 -MD -MP -MF $@.d $(include) -c $< -o $@
+
+#将文件夹./Source中的.cpp文件编译为.o文件
+#【20200305 6/8】 姜家乐&王浩波 新增.cpp的编译成.o文件的规则格式
+$(CPPOBJS):obj/%.o:srcc/%.cpp
+	riscv64-unknown-elf-g++ -march=rv64gcvxthead -mabi=lp64d -mcmodel=medlow -fno-stack-protector -g -ggdb -Wall \
+-O0 -MD -MP -MF $@.d $(include) -c $< -o $@
+
+#将文件夹./Source中的.s文件编译为.o文件 
+$(sOBJS):obj/%.o:srcs/%.s
+	riscv64-unknown-elf-gcc -x assembler-with-cpp -march=rv64gcvxthead -mabi=lp64d -mcmodel=medlow -fno-stack-protector \
+-g -ggdb -Wall -O0 -MD -MP -MF $@.d $(include) -c $< -o $@
+
+#将文件夹./Source中的.S文件编译为.o文件 
+#【20200305 7/8】 姜家乐&王浩波 新增.S的编译成.o文件的规则格式
+$(SOBJS):obj/%.o:srcs/%.S
+	riscv64-unknown-elf-gcc -x assembler-with-cpp -march=rv64gcvxthead -mabi=lp64d -mcmodel=medlow -fno-stack-protector \
+-g -ggdb -Wall -O0 -MD -MP -MF $@.d $(include) -c $< -o $@
+
+
+# 罗列文件中的目标。目标为希望生成的文件。其中“all”和“clean”为伪目标
+all : $(finalGoal)
+
+#【20200305 8/8】 姜家乐&王浩波 将原来的gcc改为g++,并将OBJ_C改为OBJ_CS
+$(finalGoal) : $(X_OBJS)
+	riscv64-unknown-elf-gcc -T $(linkFile) -Wl,--cref,-Map=$(finalGoal).map $^ -o $(finalGoal).elf -lgcc -lm
+	riscv64-unknown-elf-objcopy -v -O binary $(finalGoal).elf $(finalGoal).bin
+	riscv64-unknown-elf-objcopy $(finalGoal).elf -O ihex $(finalGoal).hex
+	riscv64-unknown-elf-objdump -D $(finalGoal).elf > $(finalGoal).lst
+	riscv64-unknown-elf-size $(finalGoal).elf
+	@echo Make header information for brom booting
+	@$(MKSUNXI) $(finalGoal).bin
+
+#设置清理工作空间的伪目标
+#仅删除目标文件，其它文件若未发生变动则不编译，有利于提高编译速度
+fastClean:
+	rm -rf "$(finalGoal).elf" "$(finalGoal).hex" "$(finalGoal).map"
+	-@$(printf) 'make: fast clean has be done'
+	-@$(printf) ' '
+#删除所有中间文件和目标文件，全部重新编译	
+clean:
+	rm -rf  "$(finalGoal).elf" "$(finalGoal).hex" "$(finalGoal).map" "$(finalGoal).lst" "$(finalGoal).hex" $(OBJ_C) $(SRC_MK)
+	-@$(printf) 'make: clean has be done'
+	-@$(printf) ' '
+test:
+	arm-none-eabi-size  $(finalGoal).elf
+	@$(printf) 'Finished building: $@'
+	@$(printf) ' '
+	-@$(printf)  $(OBJ_C)
+	
+#指定哪些目标为伪目标
+.PHONY: all clean fastClean test
+
+

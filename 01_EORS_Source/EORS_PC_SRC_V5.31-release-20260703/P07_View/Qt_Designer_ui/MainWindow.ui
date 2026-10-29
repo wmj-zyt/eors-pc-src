@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1200</width>
+    <height>800</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>EORS</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../../P02_Resource/image.qrc">
+    <normaloff>:/img/images/icon.ico</normaloff>:/img/images/icon.ico</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(238, 242, 255);</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,13">
+    <property name="spacing">
+     <number>6</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>6</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QFrame" name="leftContainer">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>60</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>80</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QFrame {
+    background-color:#9265F4;  /* 淡紫色 */
+    margin: 0px;               /* 无外间距 */
+    padding: 0px;              /* 无内间距 */
+    border: none;              /* 无边框 */
+}
+</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="0" column="0">
+        <widget class="QWidget" name="logo" native="true">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>50</width>
+           <height>50</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>100</width>
+           <height>100</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgba(0, 0, 0, 0);
+image: url(:/img/images/soochow01.png);
+border:2px solid rgb(255, 255, 255);
+border-radius:10px;
+</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="0">
+        <widget class="QPushButton" name="softwareHelp">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>50</width>
+           <height>40</height>
+          </size>
+         </property>
+         <property name="toolTip">
+          <string>帮助</string>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">/* 透明背景 */
+QPushButton {
+	background-image:url(:/img/images/info.png);
+    background-color: transparent;
+    border: none;
+	background-repeat: no-repeat;
+	background-position: center;
+	border: none;
+	padding: 0px;
+	border-left:  solid transparent;
+	color: rgba(255, 255, 255, 199);
+	margin: 0px;
+    border-radius: 7px;  /* 圆角半径，值越大越圆 */
+
+}
+
+QPushButton:hover,QPushButton:focus{
+	background-color: #7942F0;
+}</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+         <property name="autoExclusive">
+          <bool>true</bool>
+         </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup</string>
+         </attribute>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QPushButton" name="dataAcquisition">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>50</width>
+           <height>45</height>
+          </size>
+         </property>
+         <property name="toolTip">
+          <string>数据获取</string>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">/* 透明背景 */
+QPushButton {
+	background-image:url(:/img/images/uploadImg.png);
+    background-color: transparent;
+    border: none;
+	background-repeat: no-repeat;
+	background-position: center;
+	border: none;
+	padding: 0px;
+	border-left:  solid transparent;
+	color: rgba(255, 255, 255, 199);
+	margin: 0px;
+    border-radius: 7px;  /* 圆角半径，值越大越圆 */
+
+}
+
+QPushButton:hover,QPushButton:focus{
+background-color: #7942F0;
+}
+/* 可选：通过伪元素添加悬浮提示 */
+QPushButton:hover::after {
+    content: &quot;悬浮提示文字&quot;;    /* 仅部分Qt版本支持 */
+}
+QPushButton[selected=&quot;true&quot;] {
+}</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
+         </property>
+         <property name="autoExclusive">
+          <bool>true</bool>
+         </property>
+         <property name="autoDefault">
+          <bool>true</bool>
+         </property>
+         <property name="default">
+          <bool>true</bool>
+         </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup</string>
+         </attribute>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QPushButton" name="modelPredict">
+         <property name="minimumSize">
+          <size>
+           <width>50</width>
+           <height>45</height>
+          </size>
+         </property>
+         <property name="toolTip">
+          <string>模型推理</string>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">/* 透明背景 */
+QPushButton {
+	background-image:url(:/img/images/模型推理.png);
+    background-color: transparent;
+    border: none;
+	background-repeat: no-repeat;
+	background-position: center;
+	border: none;
+	padding: 0px;
+	border-left:  solid transparent;
+	color: rgba(255, 255, 255, 199);
+	margin: 0px;
+    border-radius: 7px;  /* 圆角半径，值越大越圆 */
+
+}
+
+QPushButton:hover,QPushButton:focus{
+background-color: #7942F0;
+}
+/* 可选：通过伪元素添加悬浮提示 */
+QPushButton:hover::after {
+    content: &quot;悬浮提示文字&quot;;    /* 仅部分Qt版本支持 */
+}</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="0">
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="4" column="0">
+        <widget class="QPushButton" name="modelTraining">
+         <property name="minimumSize">
+          <size>
+           <width>50</width>
+           <height>45</height>
+          </size>
+         </property>
+         <property name="toolTip">
+          <string>模型训练</string>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">/* 透明背景 */
+QPushButton {
+	background-image:url(:/img/images/模型训练.png);
+    background-color: transparent;
+    border: none;
+	background-repeat: no-repeat;
+	background-position: center;
+	border: none;
+	padding: 0px;
+	border-left:  solid transparent;
+	color: rgba(255, 255, 255, 199);
+	margin: 0px;
+    border-radius: 7px;  /* 圆角半径，值越大越圆 */
+
+}
+
+QPushButton:hover,QPushButton:focus{
+background-color: #7942F0;
+}
+/* 可选：通过伪元素添加悬浮提示 */
+QPushButton:hover::after {
+    content: &quot;悬浮提示文字&quot;;    /* 仅部分Qt版本支持 */
+}</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="autoExclusive">
+          <bool>false</bool>
+         </property>
+         <property name="default">
+          <bool>false</bool>
+         </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup</string>
+         </attribute>
+        </widget>
+       </item>
+       <item row="6" column="0">
+        <widget class="QPushButton" name="componentGeneration">
+         <property name="minimumSize">
+          <size>
+           <width>50</width>
+           <height>45</height>
+          </size>
+         </property>
+         <property name="toolTip">
+          <string>生成构件</string>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">/* 透明背景 */
+QPushButton {
+	background-image:url(:/img/images/生成构件.png);
+    background-color: transparent;
+    border: none;
+	background-repeat: no-repeat;
+	background-position: center;
+	border: none;
+	padding: 0px;
+	border-left:  solid transparent;
+	color: rgba(255, 255, 255, 199);
+	margin: 0px;
+    border-radius: 7px;  /* 圆角半径，值越大越圆 */
+
+}
+
+QPushButton:hover,QPushButton:focus{
+background-color: #7942F0;
+}
+/* 可选：通过伪元素添加悬浮提示 */
+QPushButton:hover::after {
+    content: &quot;悬浮提示文字&quot;;    /* 仅部分Qt版本支持 */
+}</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QFrame" name="header">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QLabel" name="appDesc">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>20</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">font: 700 italic 11pt &quot;Segoe UI&quot;;
+border:none;
+border-bottom:1px solid #e2e9f7;</string>
+           </property>
+           <property name="text">
+            <string>这里是软件版本信息</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QStackedWidget" name="stackedWidget">
+        <property name="minimumSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">/* StackedWidget 样式 */
+QStackedWidget {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 6px;
+}
+
+/* StackedWidget 中的页面内容区域 */
+QStackedWidget &gt; QWidget {
+    background-color: transparent;
+    border-radius: 4px;
+}</string>
+        </property>
+        <widget class="QWidget" name="page"/>
+        <widget class="QWidget" name="page_2"/>
+       </widget>
+      </item>
+      <item>
+       <widget class="QFrame" name="footer">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border:none;border-top:1px solid #e2e9f7;</string>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <item>
+          <widget class="QLabel" name="statusBar">
+           <property name="styleSheet">
+            <string notr="true">font: 700 11pt &quot;Segoe UI&quot;;
+color: rgba(0, 0, 0, 140);</string>
+           </property>
+           <property name="text">
+            <string>这里是状态栏</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources>
+  <include location="../../P02_Resource/image.qrc"/>
+ </resources>
+ <connections/>
+ <buttongroups>
+  <buttongroup name="buttonGroup"/>
+ </buttongroups>
+</ui>

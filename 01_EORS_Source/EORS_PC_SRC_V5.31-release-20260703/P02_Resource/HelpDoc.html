@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EORS 软件帮助文档 - Graphviz安装指南</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #ffffff;
+            color: #000000;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        .main-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .sub-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .step {
+            margin-bottom: 25px;
+            padding-left: 20px;
+        }
+        
+        .step-number {
+            font-weight: bold;
+            margin-right: 5px;
+        }
+        
+        .red-box {
+            border: 2px solid #ff0000;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+            background-color: #fffafa;
+        }
+        
+        .download-list {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+        
+        .download-list li {
+            margin-bottom: 8px;
+        }
+        
+        .download-link {
+            color: #0000ff;
+            text-decoration: underline;
+        }
+        
+        .download-link:hover {
+            color: #ff0000;
+        }
+        
+        .cmd-window {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: "Courier New", monospace;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        
+        .cmd-line {
+            margin-bottom: 5px;
+        }
+        
+        .cmd-prompt {
+            color: #00ff00;
+        }
+        
+        .note {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f5f5f5;
+            border-left: 4px solid #888888;
+            font-size: 14px;
+        }
+        
+        .section-title {
+            font-weight: bold;
+            margin: 15px 0 10px 0;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="main-title">EORS 软件帮助文档</div>
+        <div class="sub-title">软件依赖：Graphviz图形可视化工具安装步骤</div>
+    </div>
+    
+    <div class="step">
+        <span class="step-number">1.</span> 打开Graphviz的官方下载界面
+    </div>
+    
+    <div class="red-box">
+        <div class="section-title">Windows</div>
+        <ul class="download-list">
+            <li>Stable Windows install packages, built with Microsoft Visual Studio 16 2019:</li>
+            <li>graphviz-12.1.2</li>
+            <li>
+                <a href="https://graphviz.org/download/#windows" class="download-link">graphviz-12.1.2(64-bit) EXE installer [sha256]</a>
+            </li>
+            <li>
+                <a href="https://graphviz.org/download/#windows" class="download-link">graphviz-12.1.2(32-bit) EXE installer [sha256]</a>
+            </li>
+            <li>
+                <a href="https://graphviz.org/download/#windows" class="download-link">graphviz-12.1.2(64-bit) ZIP archive [sha256] (contains all tools and libraries)</a>
+            </li>
+            <li>
+                <a href="https://graphviz.org/download/#windows" class="download-link">graphviz-12.1.2(32-bit) ZIP archive [sha256] (contains all tools and libraries)</a>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="step">
+        <span class="step-number">2.</span> 选择适合你的Windows版本(通常是64位)的安装程序并下载。
+    </div>
+    
+    <div class="step">
+        <span class="step-number">3.</span> 双击下载的.exe文件，遵循安装向导的指示完成安装过程。注意在安装过程中勾选"自动添加到环境变量"。
+    </div>
+    
+    <div class="step">
+        <span class="step-number">4.</span> 若在上一步中未选择添加到环境变量，则在电脑的"编辑系统环境变量"窗口将Graphviz的bin目录添加到Path环境变量中，点击确定保存修改。
+    </div>
+    
+    <div class="step">
+        <span class="step-number">5.</span> 重启计算机使环境变量生效。
+    </div>
+    
+    <div class="step">
+        <span class="step-number">6.</span> 打开电脑上的cmd命令提示窗口，输入dot -v并按Enter键，如果Graphviz已正确安装并配置，应该会显示Graphviz的版本信息。
+    </div>
+    
+    <div class="red-box">
+        <div class="cmd-window">
+            <div class="cmd-line">Microsoft Windows [版本 10.0.19045.4894]</div>
+            <div class="cmd-line">(c) Microsoft Corporation。保留所有权利。</div>
+            <div class="cmd-line">
+                <span class="cmd-prompt">C:\Users\XX></span>dot -V
+            </div>
+            <div class="cmd-line">dot - graphviz version 11.0.0 (20240428.1522)</div>
+        </div>
+    </div>
+    
+    <div class="note">
+        <strong>更多详细信息</strong><br>
+        请参考软件安装目录中01-Doc文件夹下的文档
+    </div>
+</body>
+</html>
